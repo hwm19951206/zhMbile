@@ -31,11 +31,6 @@ new Vue({
   store,
   reset,
   render:function (h) {
-    // if(localStorage.getItem('username')){
-    //   return h(App)
-    // }else{
-    //   return h(Login)
-    // }
     return h(App)
   }
 }).$mount('#app')

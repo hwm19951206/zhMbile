@@ -14,10 +14,15 @@ Router.prototype.push = function push(location) {
 }
 const routes = [
     {
+        path: '/login',
+        name: 'Login',
+        component: Login,
+    },
+    {
         path: '/',
         name: 'Index',
         component: Index,
-        // redirect:'/my',
+        redirect:'/my',
         children:[
             {
                 path:'/my',
@@ -31,11 +36,7 @@ const routes = [
             }
         ]
     },
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login,
-    },
+
 ]
 const router = new Router({
     mode: 'history',
@@ -43,7 +44,14 @@ const router = new Router({
     routes,
 })
 router.beforeEach((to, from, next) => {
-    if(to.name)
-    next()
+    const userName=localStorage.getItem('username')
+    if(userName||to.name==='Login'){
+        next()
+    }else{
+        console.log(to.path)
+        next({
+            name:'Login',
+        })
+    }
 })
 export default router
