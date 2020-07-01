@@ -1,25 +1,49 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Login from './Login.vue'
+import Index from '../src/view/index.vue'
+import Todos from '../src/view/PJmanger/todos.vue'
+// import PJmanager from '../src/components/PJmanager'
+import My from '../src/view/PJmanger/my'
+
 
 Vue.use(Router)
-
-export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+const routes = [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+        path: '/',
+        name: 'Index',
+        component: Index,
+        // redirect:'/my',
+        children:[
+            {
+                path:'/my',
+                name:'My',
+                component:My
+            },
+            {
+                path: '/todos',
+                name: 'Todos',
+                component: Todos
+            }
+        ]
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
+        path: '/login',
+        name: 'Login',
+        component: Login,
+    },
+]
+const router = new Router({
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes,
 })
+router.beforeEach((to, from, next) => {
+    if(to.name)
+    next()
+})
+export default router
