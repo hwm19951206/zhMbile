@@ -2,31 +2,31 @@
   <div class="package">
     <header>
       <div class="zh_ch">
-        <img src="../../src/assets/img/word.png" alt />
+        <img src="../../assets/img/word.png" alt />
       </div>
       <div class="zh_en">
-        <img src="../../src/assets/img/eng.png" alt />
+        <img src="../../assets/img/eng.png" alt />
       </div>
     </header>
     <section>
       <div class="todo_box">
         <span class="todo_word">待办事项</span>
         <div class="todo_img">
-          <img src="../../src/assets/img/line.png" alt />
+          <img src="../../assets/img/line.png" alt />
         </div>
         <span class="todo_num">13</span>
       </div>
       <div class="item_box">
         <li>
-          <img src="../../src/assets/img/XMJL/kc.png" alt />
+          <img src="../../assets/img/XMJL/kc.png" alt />
           <span>项目库存</span>
         </li>
         <li>
-          <img src="../../src/assets/img/XMJL/cl.png" alt />
+          <img src="../../assets/img/XMJL/cl.png" alt />
           <span>材料辅料</span>
         </li>
         <li>
-          <img src="../../src/assets/img/XMJL/ph.png" alt />
+          <img src="../../assets/img/XMJL/ph.png" alt />
           <span>配货管理</span>
         </li>
       </div>

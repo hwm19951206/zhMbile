@@ -26,7 +26,7 @@
           :rules="[{ required: true, message: '请填写密码' }]"
         />
         <div style="margin: 16px;">
-          <van-button round block type="info" @click="onSubmit">登录</van-button>
+          <van-button round block type="info" @submit="onSubmit">登录</van-button>
         </div>
       </van-form>
     </section>
@@ -53,19 +53,6 @@
         localStorage.setItem("userId", res.data.userId);
         localStorage.setItem("account", res.data.account);
         this.getRoles(res.data.account)
-        const redirect = this.$route.query.redirect
-        if(redirect){
-          //存在回跳地址就回跳
-          this.$router.push(redirect)
-        }else{
-          //否则就跳到默认的首页
-          this.$router.push({
-            name: 'Index'
-          })
-        }
-        // location.reload()
-        // console.log(this.$router.push())
-        // this.$router.push({path:'/'});
       });
       console.log("submit", values);
     },
@@ -81,6 +68,16 @@
         }
       }).then(res=>{
         localStorage.setItem('role',JSON.stringify(res))
+        const redirect = this.$route.query.redirect
+        if(redirect){
+          //存在回跳地址就回跳
+          this.$router.push(redirect)
+        }else{
+          //否则就跳到默认的首页
+          this.$router.push({
+            name: 'Index'
+          })
+        }
       })
     }
   }
